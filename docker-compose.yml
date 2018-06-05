@@ -1,0 +1,8 @@
+web:
+  build: .
+  command: node server.js
+  dockerfile: Dockerfile
+  environment:
+    PORT: 3000
+    ENV: development
+    APP_URL: 'http://localhost:3000'

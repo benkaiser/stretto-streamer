@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
   "dependencies": {
     "express": "^4.15.3",
     "youtube-audio-stream": "^0.0.48"
