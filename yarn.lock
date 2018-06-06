@@ -406,11 +406,11 @@ youtube-audio-stream@^0.0.50:
     fluent-ffmpeg "2.1.2"
     through2 "2.0.3"
     xtend "4.0.1"
-    ytdl-core "0.14.4"
+    ytdl-core "0.20.2"
 
-ytdl-core@0.14.4:
-  version "0.14.4"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-0.14.4.tgz#623c0487b07a7b9a37085ff7202e270c148db778"
+ytdl-core@0.20.2:
+  version "0.20.2"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-0.20.2.tgz#0c0a1cffc2d943196f0a0809f129876877b26dad"
   dependencies:
     html-entities "^1.1.3"
     m3u8stream "^0.1.1"
