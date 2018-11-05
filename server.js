@@ -1,11 +1,15 @@
 const express = require('express');
-const youtubeStream = require('youtube-audio-stream')
+const ytdl = require('ytdl-core');
 const app = express();
 
 app.get('/youtube/:id', function(req, res) {
   const requestUrl = 'http://youtube.com/watch?v=' + req.params.id;
   try {
-    youtubeStream(requestUrl).pipe(res)
+    ytdl(requestUrl, {filter: 'audioonly', quality: 'highest'})
+    .on('error', (error) => {
+      res.status(500).send(error);
+    })
+    .pipe(res);
   } catch (exception) {
     res.status(500).send(exception)
   }
@@ -19,6 +23,7 @@ app.get('/soundcloud/:id', function(req, res) {
   res.redirect(soundcloudUrl(req.params.id));
 });
 
-app.listen(process.env.PORT || 54123, function () {
-  console.log('Server running');
+const PORT = process.env.PORT || 54123;
+app.listen(PORT, function () {
+  console.log('Server running on port ' + PORT);
 })

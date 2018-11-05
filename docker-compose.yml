@@ -3,6 +3,8 @@ web:
   command: node server.js
   dockerfile: Dockerfile
   environment:
-    PORT: 3000
+    PORT: 3001
     ENV: development
-    APP_URL: 'http://localhost:3000'
+    APP_URL: 'http://localhost:3001'
+  ports:
+    - "3001:3001"
