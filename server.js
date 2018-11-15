@@ -4,15 +4,16 @@ const app = express();
 
 app.get('/youtube/:id', function(req, res) {
   const requestUrl = 'http://youtube.com/watch?v=' + req.params.id;
-  try {
-    ytdl(requestUrl, {filter: 'audioonly', quality: 'highest'})
-    .on('error', (error) => {
-      res.status(500).send(error);
-    })
-    .pipe(res);
-  } catch (exception) {
-    res.status(500).send(exception)
-  }
+  const options = {
+    filter: 'audioonly',
+    quality: 'highestaudio',
+  };
+  ytdl.getInfo(requestUrl, options).then((info) => {
+    const format = ytdl.chooseFormat(info.formats, options);
+    res.redirect(format.url);
+  }).catch((error) => {
+    res.status(500).send(error);
+  })
 });
 
 function soundcloudUrl(id) {
