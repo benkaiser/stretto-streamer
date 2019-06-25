@@ -1,4 +1,5 @@
 const express = require('express');
+const request = require('request');
 const ytdl = require('ytdl-core');
 const app = express();
 
@@ -10,7 +11,7 @@ app.get('/youtube/:id', function(req, res) {
   };
   ytdl.getInfo(requestUrl, options).then((info) => {
     const format = ytdl.chooseFormat(info.formats, options);
-    res.redirect(format.url);
+    request.get(format.url).pipe(res);
   }).catch((error) => {
     res.status(500).send(error);
   })
